@@ -1,0 +1,5 @@
+service namespace "services" {
+
+    "logical.data::T_COR_PROYECTO" as "T_COR_PROYECTO";
+    
+}

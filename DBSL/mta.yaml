@@ -1,0 +1,47 @@
+_schema-version: "2.1"
+ID: DBSL
+version: 0.0.1
+modules:
+- name: db
+  type: hdb
+  path: db
+  requires:
+  - name: hdi_db
+    properties:
+      TARGET_CONTAINER: ~{hdi-container-name}
+  - name: remote-grant-service
+- name: xsjs_dbsl
+  type: nodejs
+  path: xsjs
+  provides:
+    - name: xsjs_api
+      properties:
+        url: '${default-url}'  
+  requires:
+    - name: hdi_db
+    - name: hanahmp
+    - name: myjobxsjs-uaa
+  properties:
+    SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]'          
+resources:
+- name: hdi_db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service-name: HDI_DBSL
+    config:
+      schema: DBSL
+      makeUniqueName: false
+  properties:
+    hdi-container-name: ${service-name}
+- name: remote-grant-service
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-name: remote-grant-service 
+- name: myjobxsjs-uaa
+  type: com.sap.xs.uaa-space
+- name: hanahmp
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-name: hanahmp
+  properties:
+      xshttpdest-SSFF-service-name: '${service-name}'         
