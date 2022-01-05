@@ -1,0 +1,34 @@
+_schema-version: "3.2"
+ID: DBSL_XSJS
+version: 0.0.1
+description: "DBSL nodejs project."
+modules:
+ - name: xsjs_dbsl
+   type: nodejs
+   path: xsjs
+   provides:
+    - name: xsjs_api
+      properties:
+        url: '${default-url}'  
+   requires:
+    - name: DBSL_CAP-db
+    - name: hanahmp
+   properties:
+    SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]' 
+
+resources:
+ # services extracted from CAP configuration
+ # 'service-plan' can be configured via 'cds.requires.<name>.vcap.plan'
+# ------------------------------------------------------------
+ - name: DBSL_CAP-db
+   type: com.sap.xs.hdi-container
+   parameters:
+     service-name: HDI_DBSL
+   properties:
+     hdi-container-name: ${service-name}
+ - name: hanahmp
+   type: org.cloudfoundry.existing-service
+   parameters:
+    service-name: hanahmp
+   properties:
+      xshttpdest-hanahmp-service-name: '${service-name}'

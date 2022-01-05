@@ -1,4 +1,2 @@
-mta_archives/
-
-# auto generated wildcard
-db/.env
+**/node_modules/**
+.env*
