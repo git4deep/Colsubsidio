@@ -13,6 +13,7 @@ modules:
    requires:
     - name: DBSL_CAP-db
     - name: hanahmp
+    - name: hanabmp
    properties:
     SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]' 
 
@@ -32,3 +33,9 @@ resources:
     service-name: hanahmp
    properties:
       xshttpdest-hanahmp-service-name: '${service-name}'
+ - name: hanabmp
+   type: org.cloudfoundry.existing-service
+   parameters:
+    service-name: hanabmp
+   properties:
+      xshttpdest-hanabmp-service-name: '${service-name}'

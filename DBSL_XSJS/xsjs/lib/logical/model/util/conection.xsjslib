@@ -1,5 +1,5 @@
 
 
 function getHanaBMPDestionation(){
-    return $.net.http.readDestination("logical.model.util", "hanabmp");
+    return $.net.http.readDestination("hanabmp");
 }

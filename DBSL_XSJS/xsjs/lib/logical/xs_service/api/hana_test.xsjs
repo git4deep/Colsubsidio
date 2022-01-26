@@ -6,7 +6,7 @@ function getObjects(){
     let conn = $.db.getConnection();
     let sql; let pstmt; let rs;
     
-    sql = 'SELECT * FROM \"_SYS_BIC\".\"logical.data.calculationviews.CORPORATIVO.ILAE/TV2_INGRESOS_TV6\" ;';
+    sql = 'SELECT * FROM \"DBSL\".\"logical.data.calculationviews.CORPORATIVO.ILAE/TV2_INGRESOS_TV6\" ;';
     pstmt = conn.prepareStatement(sql);
     
     rs = pstmt.executeQuery();
