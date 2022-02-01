@@ -2,3 +2,5 @@
 # auto generated wildcard
 gen/db/.env
 **/node_modules/**
+# auto generated wildcard
+DBSL_CAP/gen/db/.env
