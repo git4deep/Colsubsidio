@@ -1,5 +1,5 @@
 
 
 function getHanaBMPDestionation(){
-    return $.net.http.readDestination("hanabmp");
+    return $.net.http.readDestination("hanabmp"); 
 }
